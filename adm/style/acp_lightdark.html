@@ -1,0 +1,42 @@
+{% INCLUDE 'overall_header.html' %}
+
+<h1>{{ lang('LIGHTDARK_CONFIG_TITLE') }}</h1>
+
+<p><img src="https://img.shields.io/badge/{{ lang('Version') }}-{{ LIGHTDARK_VERSION }}-green.svg?style=plastic" /></p>
+
+<form id="acp_lightdark" method="post" action="{{ U_ACTION }}">
+	<fieldset>
+		<legend>{{ lang('ACP_LIGHTDARK_CONFIG') }}</legend>
+		<dl>
+			<dt>
+				<label for="lightdark_enable">{{ lang('LIGHTDARK_ENABLE') }}{{ lang('COLON') }}</label><br />
+				<span>{{ lang('LIGHTDARK_ENABLE_EXPLAIN') }}</span>
+			</dt>
+			<dd>
+				<label><input type="radio" class="radio" name="lightdark_enable" value="1"{% if LIGHTDARK_ENABLE %} id="lightdark_enable" checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="lightdark_enable" value="0"{% if not LIGHTDARK_ENABLE %} id="lightdark_enable" checked="checked"{% endif %} /> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+		<dl class="lightdark_toggle"{% if not LIGHTDARK_ENABLE %} style="display: none;"{% endif %}>
+			<dt>
+				<label for="lightdark_purge">{{ lang('LIGHTDARK_RESET') }}{{ lang('COLON') }}</label><br />
+				<span>{{ lang('LIGHTDARK_RESET_EXPLAIN') }}</span>
+			</dt>
+			<dd>
+				<input class="button1" type="submit" id="lightdark_purge" name="lightdark_purge" value="{{ lang('LIGHTDARK_RESET_BUTTON') }}" />
+				<label>{{ lang('LIGHTDARK_RESET_CONFIRM') }}{{ lang('COLON') }}</label>
+				<label><input type="radio" name="lightdark_purge_confirm" value="1" /> {{ lang('YES') }}</label>
+				<label><input type="radio" name="lightdark_purge_confirm" value="0" id="lightdark_purge_confirm" checked="checked" /> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+		<p class="submit-buttons">
+			<input type="hidden" name="action" value="save" />
+			<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+			<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
+			{{ S_FORM_TOKEN }}
+		</p>
+	</fieldset>
+</form>
+
+{% INCLUDEJS '@dmzx_lightdark/lightdark_adm.js' %}
+{% INCLUDE 'overall_footer.html' %}

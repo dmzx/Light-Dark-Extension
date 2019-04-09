@@ -1,0 +1,28 @@
+services:
+    dmzx.lightdark.admin.controller:
+        class: dmzx\lightdark\controller\admin_controller
+        arguments:
+            - '@template'
+            - '@user'
+            - '@request'
+            - '@config'
+            - '@log'
+            - '@dbal.conn'
+    dmzx.lightdark.controller:
+        class: dmzx\lightdark\controller\controller
+        arguments:
+            - '@dbal.conn'
+            - '@controller.helper'
+            - '@request'
+            - '@user'
+    dmzx.lightdark.events:
+        class: dmzx\lightdark\event\main_listener
+        arguments:
+            - '@user'
+            - '@dbal.conn'
+            - '@config'
+            - '@template'
+            - '@controller.helper'
+            - '@request'
+        tags:
+            - { name: event.listener }

@@ -1,0 +1,9 @@
+<dl>
+	<dt>
+		<label for="lightdark_ucp_index_enable1">{{ lang('LIGHTDARK_UPC_INDEX') }}{{ lang('COLON') }}</label>
+	</dt>
+	<dd>
+		<label for="lightdark_ucp_index_enable1"><input type="radio" name="lightdark_ucp_index_enable" id="lightdark_ucp_index_enable1" value="1"{% if S_UCP_LIGHTDARK_INDEX %} checked="checked"{% endif %} /> {{ lang('LIGHTDARK_LIGHT') }}</label>
+		<label for="lightdark_ucp_index_enable0"><input type="radio" name="lightdark_ucp_index_enable" id="lightdark_ucp_index_enable0" value="0"{% if not S_UCP_LIGHTDARK_INDEX %} checked="checked"{% endif %} /> {{ lang('LIGHTDARK_DARK') }}</label>
+	</dd>
+</dl>

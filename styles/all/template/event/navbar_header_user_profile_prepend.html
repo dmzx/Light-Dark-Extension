@@ -1,0 +1,10 @@
+{% if S_LIGHTDARK_ENABLE and S_USER_LOGGED_IN %}
+{% INCLUDEJS '@dmzx_lightdark/js/lightdark.js' %}
+<li class="rightside" data-skip-responsive="true">
+	<div id="lightdark">
+		<a href="{{ U_LIGHTDARK_CLOSE }}" data-ajax="close_lightdark" data-overlay="false" onclick="fav()">
+			<i id="favIcon" class="icon fa fa-{% if S_LIGHTDARK_DARK %}moon{% else %}sun{% endif %}-o fa-fw" title="{% if S_LIGHTDARK_DARK %}{{ lang('LIGHTDARK_DARK_STYLE') }}{% else %}{{ lang('LIGHTDARK_LIGHT_STYLE') }}{% endif %}"></i>
+		</a>
+	</div>
+</li>
+{% endif %}
